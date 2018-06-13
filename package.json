@@ -5,11 +5,44 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "build -mwl",
+    "dist:win": "build --w",
+    "dist:mac": "build --m",
+    "dist:linux": "build --l"
   },
-  "author": "Thierry Deo",
+  "build": {
+    "appId": "com.electron.timer",
+    "productName": "Timer",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
+  "author": "Thierry Deo <thierry.deo@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^2.0.2"
+    "electron": "^2.0.2",
+    "electron-builder": "^20.15.1"
   }
 }
