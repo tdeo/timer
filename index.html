@@ -3,22 +3,35 @@
   <head>
     <meta charset="UTF-8">
     <title>Timer</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="cyborg-bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="timer.js"></script>
   </head>
 
   <body onload="init()">
-    <div>
-      <h1 id="counter">0</h1>
-    </div>
-    <div>
-      <button onclick="add()">+</button>
-      <button onclick="remove()">-</button>
-      <button onclick="init()">reset</button>
-    </div>
-    <div>
-      <button onclick="pause()">pause</button>
-      <button onclick="resume()">resume</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-9">
+          <div class="row">
+            <div class="col-12">
+              <h1 id="counter">0</h1>
+            </div>
+            <div class="col-12 btn-grid">
+              <button type="button" class="btn btn-primary btn-lg" onclick="add()">+</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="remove()">-</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="init()">reset</button>
+              <br>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="pause()">pause</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="resume()">resume</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
