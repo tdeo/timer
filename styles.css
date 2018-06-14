@@ -6,6 +6,7 @@
     margin: 2px 0;
 }
 
-.nopadding {
-  padding: 0 !important;
+.scrollable {
+  height: 100vh;
+  overflow-y: scroll;
 }

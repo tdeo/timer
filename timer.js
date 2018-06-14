@@ -12,6 +12,7 @@ function readableTime(time) {
   minutes = minutes % 60;
 
   var result = seconds + millis;
+  if (millis === 0.00) { result = result += '.0'; }
   if (minutes > 0 || hours > 0) {
     if (seconds < 10 ) { result = "0" + result; }
     result = minutes + ":" + result;
@@ -30,6 +31,11 @@ function init() {
   pausedAt = undefined;
   redraw();
   $("button").css("display", "initial");
+  setInterval(showTime, 30);
+}
+
+function showTime() {
+  $("#time")[0].innerHTML = readableTime(runtime());
 }
 
 function runtime() {
@@ -46,12 +52,10 @@ function redraw() {
   }
 
   var table = "";
-  var previous = splits[splits.length - 6];
-  if (previous === undefined) { previous = 0; }
-  splits.slice(-5).forEach(function(value, idx) {
-    row = "<tr><td>" + (Math.max(splits.length - 4, 1) + idx) + "</td><td>" + readableTime(value) + "</td><td>";
-    if (previous !== undefined) { row += readableTime(value - previous); }
-    row += "</td></tr>";
+  var previous;
+  if (previous === undefined)
+  splits.forEach(function(value, idx) {
+    row = "<tr><td>" + (idx + 1) + "</td><td>" + readableTime(value) + "</td><td>" + (previous === undefined ? '' : readableTime(value - previous)) + "</td></tr>";
     previous = value;
     table = row + table;
   });
@@ -59,6 +63,7 @@ function redraw() {
 }
 
 function add() {
+  if (startedAt === undefined) { return init(); }
   splits.push(runtime());
   redraw();
 }
@@ -69,7 +74,11 @@ function remove() {
 }
 
 function isPaused() {
-  return pausedAt !== undefined
+  return pausedAt !== undefined;
+}
+
+function pauseUnpause() {
+  isPaused() ? resume() : pause();
 }
 
 function pause() {
