@@ -5,3 +5,7 @@
 .btn-grid > .btn {
     margin: 2px 0;
 }
+
+.nopadding {
+  padding: 0 !important;
+}

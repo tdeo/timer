@@ -3,31 +3,39 @@
   <head>
     <meta charset="UTF-8">
     <title>Timer</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script src="timer.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="cyborg-bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="timer.js"></script>
   </head>
 
-  <body onload="init()">
+  <body>
     <div class="container">
       <div class="row">
-        <div class="col-3">
-
+        <div class="col-4">
+          <table class="table table-sm">
+            <tbody id="lastSplits">
+            </tbody>
+          </table>
         </div>
-        <div class="col-9">
+        <div class="col-5 nopadding">
           <div class="row">
-            <div class="col-12">
-              <h1 id="counter">0</h1>
+            <div class="col-12 nopadding">
+              <button style="display: inline-block; position: relative; top: -7px; margin-right: 10px; display: none" type="button" class="btn btn-primary" onclick="add()">Split</button>
+              <h3 style="display: inline-block" id="counter">
+                <button type="button" class="btn btn-primary" onclick="init()">Start !</button>
+              </h3>
             </div>
-            <div class="col-12 btn-grid">
-              <button type="button" class="btn btn-primary btn-lg" onclick="add()">+</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="remove()">-</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="init()">reset</button>
+            <div class="col-12 nopadding btn-grid">
+              <button style="display: none" type="button" class="btn btn-secondary btn-sm" onclick="remove()">cancel</button>
+              <button style="display: none" type="button" class="btn btn-secondary btn-sm" onclick="init()">reset</button>
               <br>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="pause()">pause</button>
-              <button type="button" class="btn btn-secondary btn-sm" onclick="resume()">resume</button>
+              <button style="display: none" type="button" class="btn btn-secondary btn-sm" onclick="pause()">pause</button>
+              <button style="display: none" type="button" class="btn btn-secondary btn-sm" onclick="resume()">resume</button>
             </div>
           </div>
         </div>
