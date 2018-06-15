@@ -6,10 +6,11 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "build -mwl",
-    "dist:win": "build --w",
-    "dist:mac": "build --m",
-    "dist:linux": "build --l"
+    "build": "build -mwl",
+    "build:win": "build --w",
+    "build:mac": "build --m",
+    "build:linux": "build --l",
+    "release": "build -mwl"
   },
   "build": {
     "appId": "com.electron.timer",
@@ -43,7 +44,8 @@
         "portable"
       ],
       "icon": "build/icon.ico"
-    }
+    },
+    "publish": ["github"]
   },
   "author": "Thierry Deo <thierry.deo@gmail.com>",
   "license": "ISC",
